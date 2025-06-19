@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="vendor_customorderprocessing_log" resource="default" engine="innodb" comment="Custom Order Status Log">
+        <column xsi:type="int" name="log_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Log ID"/>
+        <column xsi:type="int" name="order_id" unsigned="true" nullable="false" comment="Order ID"/>
+        <column xsi:type="varchar" name="old_status" nullable="true" length="32" comment="Status From"/>
+        <column xsi:type="varchar" name="new_status" nullable="false" length="32" comment="Status To"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Created At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="log_id"/>
+        </constraint>
+        <index referenceId="VENDOR_CUSTOMORDER_LOG_ORDER_ID" indexType="btree">
+            <column name="order_id"/>
+        </index>
+    </table>
+</schema>

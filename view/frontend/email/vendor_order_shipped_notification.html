@@ -1,0 +1,31 @@
+<!--
+/**
+ * Custom Shipment Notification Email Template 
+ */
+-->
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td>
+            <h2>{{trans "Shipment Notification"}}</h2>
+            <p>{{trans "Hello %customer_name," customer_name=$order.getCustomerName()}}</p>
+            <p>{{trans "Your order <strong>#%order_id</strong> has been shipped!" order_id=$order.increment_id|raw}}</p>
+            <p>
+            <strong>{{trans "Shipping Carrier:"}}</strong> {{var shipment.getShippingDescription()}}<br/>
+            <strong>{{trans "Tracking Number:"}}</strong> {{var shipment.getTracksHtml()|raw}}
+            </p>
+            <h3>{{trans "Shipped Items:"}}</h3>
+            <table cellpadding="5" cellspacing="0" border="1" width="100%">
+            <tr>
+                <th>{{trans "Product"}}</th>
+                <th>{{trans "SKU"}}</th>
+                <th>{{trans "Qty"}}</th>
+            </tr>
+            {{var items_html|raw}}
+            </table>
+            <p>
+            {{trans 'You can view your order status and details by <a href="%url">logging into your account</a>.' url=$order.getCustomerViewUrl()|raw}}
+            </p>
+            <p>{{trans "Thank you for shopping with us!"}}</p>
+        </td>
+    </tr>
+</table>

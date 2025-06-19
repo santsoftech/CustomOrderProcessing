@@ -1,0 +1,16 @@
+{
+    "name": "vendor/custom-order-processing",
+    "description": "Custom Order Processing Module",
+    "type": "magento2-module",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Vendor\\CustomOrderProcessing\\": ""
+        }
+    },
+    "require": {
+        "php": "^8.1"
+    }
+}
